@@ -110,3 +110,21 @@ export const deleteBlog = async (req,res,next)=>{
         return res.status(400).json({message: "Something went wrong"});
     }
 }
+
+export const getUserBlogs = async (req, res, next)=>{
+    const userId= req.params.id;
+    let userBlogs;
+
+    try {
+        userBlogs = await User.findById(userId).populate("blogs");
+
+        if(!userBlogs){
+            return res.status(404).json({message: "No blogs posted by this user"});
+        }
+
+        return res.status(200).json({blogs:userBlogs});
+
+    } catch (error) {
+        return res.status(400).json({message:"Something went wrong"});
+    }
+}
