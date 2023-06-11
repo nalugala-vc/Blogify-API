@@ -9,8 +9,6 @@ app.use(express.json());
 app.use("/api/user",router);
 app.use("/api/blog",blogRouter);
 
-//git remote add origin https://github.com/nalugala-vc/BitiAgency.git
-
 /*connect to mongodb*/
 mongoose.connect('mongodb+srv://VenessaChebukwa:Romulemia01@cluster0.g7eigh4.mongodb.net/Blog?retryWrites=true&w=majority').then(()=>app.listen(5000)).then(()=>console.log('Connected to database and listening to localhost port 5000')).catch((err)=>console.log(err));
 
